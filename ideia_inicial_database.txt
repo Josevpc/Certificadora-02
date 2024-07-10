@@ -1,0 +1,57 @@
+- Componentes Eletrônicos Disponíveis:
+  - Resistor
+  - Diodo
+  - Fonte de Tensão
+  - Capacitor
+
+- Árvore de Combinações:
+  - Resistor
+    - + Resistor: Resulta em um resistor de valor equivalente.
+    - + Diodo: Cria um circuito limitador de corrente em uma direção e atuador de resistor na outra.
+    - + Fonte de Tensão: Cria um circuito de divisão de tensão.
+    - + Capacitor: Cria um circuito de filtro de passa-baixa ou passa-alta.
+  
+  - Diodo
+    - + Diodo: Forma um novo tipo de diodo com características combinadas.
+    - + Resistor: Cria um circuito limitador de corrente em uma direção e atuador de resistor na outra.
+    - + Fonte de Tensão: Cria um regulador de tensão simples.
+    - + Capacitor: Cria um circuito retificador com filtro capacitivo.
+  
+  - Fonte de Tensão
+    - + Resistor: Cria um circuito de divisão de tensão.
+    - + Diodo: Cria um regulador de tensão simples.
+    - + Capacitor: Cria um circuito retificador de meia onda ou onda completa.
+  
+  - Capacitor
+    - + Resistor: Cria um circuito de filtro de passa-baixa ou passa-alta.
+    - + Diodo: Cria um circuito retificador com filtro capacitivo.
+    - + Fonte de Tensão: Cria um circuito retificador de meia onda ou onda completa.
+
+  - Resistor + Diodo
+    - + Resistor: Cria um circuito limitador de corrente em uma direção e atuador de resistor na outra.
+    - + Diodo: Cria um novo tipo de diodo com características combinadas.
+    - + Fonte de Tensão: Cria um circuito de retificação com carga.
+    - + Capacitor: Cria um circuito retificador com filtro capacitivo.
+
+  - Fonte de Tensão + Diodo
+    - + Resistor: Cria um regulador de tensão simples.
+    - + Diodo: Cria um circuito retificador de meia onda ou onda completa.
+    - + Capacitor: Cria um regulador de tensão com baixa ondulação.
+
+  - Diodo + Capacitor
+    - + Resistor: Cria um circuito retificador com filtro capacitivo.
+    - + Diodo: Cria um novo tipo de diodo com características combinadas.
+    - + Fonte de Tensão: Cria um circuito retificador com filtro capacitivo.
+    - + Capacitor: Cria um circuito estabilizador de tensão.
+
+  - Resistor + Fonte de Tensão
+    - + Resistor: Cria um circuito de divisão de tensão.
+    - + Diodo: Cria um regulador de tensão simples.
+    - + Fonte de Tensão: Cria um circuito regulador de tensão.
+    - + Capacitor: Cria um circuito de filtro de tensão regulada.
+
+  - Fonte de Tensão + Capacitor
+    - + Resistor: Cria um circuito retificador de meia onda ou onda completa.
+    - + Diodo: Cria um circuito retificador com filtro capacitivo.
+    - + Fonte de Tensão: Cria um circuito estabilizador de tensão.
+    - + Capacitor: Cria um novo tipo de fonte de tensão regulada.
