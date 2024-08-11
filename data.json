@@ -1,0 +1,23 @@
+{
+    "combinations": {
+        "Resistor+Resistor": "Resistor Equivalente",
+        "Resistor+Diodo": "Limitador de Corrente",
+        "Resistor+Fonte de Tensão": "Divisão de Tensão",
+        "Resistor+Capacitor": "Filtro RC",
+        "Diodo+Diodo": "Novo Diodo",
+        "Diodo+Fonte de Tensão": "Regulador de Tensão",
+        "Diodo+Capacitor": "Retificador com Filtro",
+        "Fonte de Tensão+Capacitor": "Retificador de Meia Onda"
+    },
+    "descriptions": {
+        "Resistor Equivalente": "Um resistor com valor equivalente à combinação de resistores.",
+        "Limitador de Corrente": "Circuito que limita a corrente em uma direção.",
+        "Divisão de Tensão": "Circuito que divide a tensão entre dois resistores.",
+        "Filtro RC": "Circuito que atua como um filtro de passa-baixa ou passa-alta.",
+        "Novo Diodo": "Um diodo com características combinadas.",
+        "Regulador de Tensão": "Circuito que regula a tensão de saída.",
+        "Retificador com Filtro": "Circuito que retifica a tensão com um filtro capacitivo.",
+        "Retificador de Meia Onda": "Circuito que retifica meia onda da tensão de entrada."
+    }
+
+}

@@ -1,43 +1,108 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combinar Dados</title>
+    <title>Layout com Barra Lateral</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+        /* Adicione o CSS para a barra de progresso aqui */
+        .progress-container {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px 0;
         }
 
-        input,
-        button {
-            margin: 5px 0;
-            padding: 10px;
-            font-size: 16px;
+        .progress-bar {
+            height: 30px;
+            background-color: #4caf50;
+            width: 0%;
+            text-align: center;
+            color: white;
+            line-height: 30px;
+            /* Alinha o texto verticalmente */
         }
 
-        button {
-            cursor: pointer;
+        .progress-text {
+            text-align: center;
+            margin: 10px 0;
         }
     </style>
 </head>
 
 <body>
-    <h1>Combinar Dados</h1>
-    <div>
-        <label for="input1">Entrada 1:</label>
-        <input type="text" id="input1">
+    <div class="container">
+        <div class="main-content">
+            <div class="content-container">
+                <div class="box" id="box1">
+                    <button id="removeButton1" class="remove-button" disabled>Remover</button>
+                    <h2 id="title1">Título 1</h2>
+                    <img id="img1" src="" alt="Imagem 1">
+                </div>
+                <div class="icon">+</div>
+                <div class="box" id="box2">
+                    <button id="removeButton2" class="remove-button" disabled>Remover</button>
+                    <h2 id="title2">Título 2</h2>
+                    <img id="img2" src="" alt="Imagem 2">
+                </div>
+                <div class="icon">=</div>
+                <div class="box" id="box3">
+                    <h2>Título 3</h2>
+                    <div id="result">Resultado</div>
+                </div>
+            </div>
+            <button id="combineButton" disabled>Combinar</button>
+
+            <!-- Barra de progresso -->
+            <div class="progress-container">
+                <div id="progressBar" class="progress-bar">0%</div>
+            </div>
+            <div id="progressText" class="progress-text">0/0 componentes descobertos</div>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-header">Barra Lateral
+                <!-- Função de Busca -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Digite para pesquisar..." oninput="search()">
+                    <div class="results" id="results"></div>
+                </div>
+            </div>
+            <div class="components">
+                <div class="component" data-component="Resistor">Resistor
+                    <div class="hidden-content">
+                        <p>Oi eu sou uma descrição sobre um Resistor :></p>
+                    </div>
+                </div>
+                <div class="component" data-component="Diodo">Diodo
+                    <div class="hidden-content">
+                        <p>Oi eu sou uma descrição sobre um Diodo :></p>
+                    </div>
+                </div>
+                <div class="component" data-component="Fonte de Tensão">Fonte de Tensão
+                    <div class="hidden-content">
+                        <p>Oi eu sou uma descrição sobre uma Fonte de Tensão :></p>
+                    </div>
+                </div>
+                <div class="component" data-component="Capacitor">Capacitor
+                    <div class="hidden-content">
+                        <p>Oi eu sou uma descrição sobre um Capacitor :></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="input2">Entrada 2:</label>
-        <input type="text" id="input2">
+    <!-- Modal para novo componente descoberto -->
+    <div id="componentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Novo Componente</h2>
+            <img id="modalImage" src="" alt="Componente" />
+            <p id="modalDescription">Descrição do componente.</p>
+        </div>
     </div>
-    <button onclick="teste()">Combinar</button>
-    <p id="resultado"></p>
-    <button onclick="descobertos()">Descobertos</button>
-    <p id="descobertos"></p>
 
     <script src="script.js"></script>
 </body>

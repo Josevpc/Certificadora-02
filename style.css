@@ -1,0 +1,198 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.box {
+    background-color: #ddd;
+    padding: 20px;
+    margin: 10px;
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.icon {
+    font-size: 48px;
+    margin: 0 20px;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 350px;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    position: relative;
+}
+
+.sidebar-header {
+    background-color: #222;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.components,
+.combinations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 5px;
+    padding-top: 40px;
+}
+
+.component,
+.combination {
+    background-color: #555;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 75px;
+    height: 50px;
+    transition: transform 0.3s ease 1.5s, height 0.3s ease 1.5s;
+    /* Delay de 0.5s */
+    overflow: hidden;
+    position: static;
+}
+
+.component:hover {
+    transform: scale(1.65);
+    height: 150px;
+}
+
+.hidden-content{
+    opacity: 0;
+    transition: opacity 0.3s ease 1.5s;
+    /* Delay de 0.5s */
+}
+
+.component:hover .hidden-content{
+    opacity: 1;
+
+}
+
+.combination {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    width: 200px;
+}
+
+.remove-button {
+    display: block;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.remove-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#result {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+}
+
+/* Estilos do modal */
+.modal {
+    display: none;
+    /* Oculta o modal por padrão */
+    position: fixed;
+    /* Fixa o modal na tela */
+    z-index: 1;
+    /* Fixa o modal acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Ocupa toda a largura da tela */
+    height: 100%;
+    /* Ocupa toda a altura da tela */
+    overflow: auto;
+    /* Adiciona rolagem se necessário */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Fundo escuro com transparência */
+}
+
+/* Estilos do conteúdo do modal */
+.modal-content {
+    background-color: #fff;
+    /* Fundo branco para o conteúdo */
+    margin: 15% auto;
+    /* Margem centralizada verticalmente e horizontalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    /* Borda cinza clara */
+    width: 80%;
+    /* Largura do modal */
+    max-width: 600px;
+    /* Largura máxima do modal */
+    position: relative;
+    /* Para posicionar o botão de fechar */
+}
+
+/* Estilos do botão de fechar */
+.close {
+    color: #aaa;
+    /* Cor do botão de fechar */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos da imagem no modal */
+#modalImage {
+    max-width: 100%;
+    /* Garante que a imagem não ultrapasse o tamanho do modal */
+    height: auto;
+    /* Mantém a proporção da imagem */
+}
