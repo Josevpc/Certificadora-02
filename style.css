@@ -90,13 +90,14 @@ body {
     height: 150px;
 }
 
-.hidden-content{
+.hidden-content {
     opacity: 0;
     transition: opacity 0.3s ease 1.5s;
+    font-size: small;
     /* Delay de 0.5s */
 }
 
-.component:hover .hidden-content{
+.component:hover .hidden-content {
     opacity: 1;
 
 }
