@@ -8,6 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const descriptions = data.descriptions
 
+            // Inicializa uma lista para armazenar os componentes iniciais
+            let activeComponents = [];
+
+            // Itera sobre as combinações para verificar o estado inicial
+            for (let key in combinations) {
+                if (combinations[key].initial_state == 1) {
+                    activeComponents.push(combinations[key].name);
+                }
+            }
+
             const modal = document.getElementById('componentModal');
             const modalTitle = document.getElementById('modalTitle');
             const modalImage = document.getElementById('modalImage');
@@ -21,6 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const componentsDiv = document.querySelector('.components');
             // --- Div com as combinações resultantes
             //const combinationsDiv = document.querySelector('.combinations');
+
+            activeComponents.forEach(component => {
+                addNewComponent(component);
+            })
+
             const combineButton = document.getElementById('combineButton');
 
             const box1 = document.getElementById('box1');
@@ -53,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             function showComponentModal(name) {
                 modalTitle.textContent = name;
-                modalImage.src = ''; // Adicione a URL da imagem correspondente ao novo componente
-                modalDescription.textContent = descriptions[name] || 'Descrição não disponível';
+                modalImage.src = descriptions[name].image; // Adicione a URL da imagem correspondente ao novo componente
+                modalDescription.textContent = descriptions[name].short || 'Descrição não disponível';
                 modal.style.display = 'block';
             }
 
@@ -78,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (firstComponent && secondComponent) {
                     const combinationKey = `${firstComponent}+${secondComponent}`;
                     const reverseCombinationKey = `${secondComponent}+${firstComponent}`;
+
                     let resultComponent = combinations[combinationKey] || combinations[reverseCombinationKey];
 
                     if (resultComponent) {
@@ -106,13 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!firstComponent) {
                         firstComponent = selectedComponent;
                         title1.textContent = firstComponent;
-                        img1.src = ''; // Adicione a URL da imagem correspondente, se necessário
+                        img1.src = descriptions[firstComponent].image; // Adicione a URL da imagem correspondente, se necessário
                         removeButton1.disabled = false;
                         event.target.classList.add('selected');
                     } else if (!secondComponent) {
                         secondComponent = selectedComponent;
                         title2.textContent = secondComponent;
-                        img2.src = ''; // Adicione a URL da imagem correspondente, se necessário
+                        img2.src = descriptions[secondComponent].image; // Adicione a URL da imagem correspondente, se necessário
                         removeButton2.disabled = false;
                         event.target.classList.add('selected');
                         combineButton.disabled = false;
@@ -126,12 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const reverseCombinationKey = `${secondComponent}+${firstComponent}`;
                 let resultComponent = combinations[combinationKey] || combinations[reverseCombinationKey];
 
-                if (resultComponent && !availableComponents.has(resultComponent)) {
-                    addNewComponent(resultComponent);
-                    addCombinationDescription(resultComponent);
-                    availableComponents.add(resultComponent);
-                    discoveredComponents.add(resultComponent); // Marca o componente como descoberto
-                    showComponentModal(resultComponent);
+                if (resultComponent && !availableComponents.has(resultComponent.name)) {
+                    addNewComponent(resultComponent.name);
+                    addCombinationDescription(resultComponent.name);
+                    availableComponents.add(resultComponent.name);
+                    discoveredComponents.add(resultComponent.name); // Marca o componente como descoberto
+                    showComponentModal(resultComponent.name);
                     updateProgressBar();
                 }
 
@@ -159,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const newHiddenContentDiv = document.createElement('div');
                 newHiddenContentDiv.classList.add('hidden-content');
                 newHiddenContentDiv.dataset.component = name;
-                newHiddenContentDiv.textContent = `${descriptions[name]}`;
+                newHiddenContentDiv.textContent = `${descriptions[name].short}`;
 
                 newComponentDiv.appendChild(newHiddenContentDiv);
 
@@ -169,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
             function addCombinationDescription(name) {
                 const descriptionDiv = document.createElement('div');
                 descriptionDiv.classList.add('combination');
-                descriptionDiv.textContent = `${name}: ${descriptions[name]}`;
+                descriptionDiv.textContent = `${name}: ${descriptions[name].short}`;
                 // --- Comentei isso enquanto não pensamos em uma boa ideia para a div de combinações.
                 //combinationsDiv.appendChild(descriptionDiv);
             }
