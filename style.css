@@ -6,13 +6,32 @@ body {
     min-height: 100vh;
 }
 
+main {
+    display: flex;
+    width: 100%;
+}
+
 .main-content {
     flex: 1;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #131313;
+    /*#f4f4f4*/
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.logo {
+    width: 15rem;
+    height: auto;
+}
+
+.progress-text {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 1rem;
+    color: #ccc;
 }
 
 .content-container {
@@ -20,38 +39,75 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 80%;
+    height: 50vh;
+
 }
 
 .box {
-    background-color: #ddd;
+    height: 35vh;
+    background-color: #2f2f2f;
+    /*#ddd*/
     padding: 20px;
     margin: 10px;
     flex: 1;
     text-align: center;
     position: relative;
+    overflow: hidden;
+
+}
+
+.box-title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2rem;
+    color: #ccc;
 }
 
 .icon {
     font-size: 48px;
     margin: 0 20px;
+    color: #ccc;
+
 }
 
-.container {
-    display: flex;
-    width: 100%;
+#img1,
+#img2 {
+
+    width: 80%;
+    height: auto;
+    display: none;
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-top: 20%;
+
 }
 
 .sidebar {
     width: 350px;
     padding: 20px;
-    background-color: #333;
+    background: linear-gradient(#4DCBB6, #3F8EBF);
+    /*#333*/
     color: white;
     position: relative;
+
 }
 
 .sidebar-header {
-    background-color: #222;
-    padding: 10px;
+    background: #4DCBB6;
+    /*Alterações na Fonte*/
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    font-style: normal;
+    color: #ffffff;
+    /*FIM Alterações na Fonte*/
+    padding: 20px 10px 20px 10px;
     text-align: center;
     font-weight: bold;
     position: absolute;
@@ -60,45 +116,62 @@ body {
     right: 0;
 }
 
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#searchInput {
+    width: 12rem;
+    height: 1rem;
+    font-family: "Poppins", sans-serif;
+    border-radius: 20px;
+    padding: 5px;
+    width: fit-content;
+}
+
 .components,
 .combinations {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin: 5px;
-    padding-top: 40px;
+    padding-top: 80px;
 }
 
 .component,
 .combination {
-    background-color: #555;
-    border: 1px solid #000;
+    display: flex;
+    background-color: #ffffff;
+    /* Alterações na Fonte */
+    font-size: 0.9rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #525151;
+    /* Fim das Alterações de Fonte */
     border-radius: 5px;
-    padding: 10px;
+    border: 2px solid transparent;
+    padding: 13px;
     margin: 5px;
     cursor: pointer;
     text-align: center;
+    align-items: center;
+    justify-content: center;
     width: 75px;
     height: 50px;
-    transition: transform 0.3s ease 1.5s, height 0.3s ease 1.5s;
-    /* Delay de 0.5s */
     overflow: hidden;
-    position: static;
+    overflow-wrap: break-word;
+
+    transition-duration: 0.4s;
+    cursor: pointer;
+
 }
 
 .component:hover {
-    transform: scale(1.65);
-    height: 150px;
-}
 
-.hidden-content {
-    opacity: 0;
-    transition: opacity 0.3s ease 1.5s;
-    font-size: small;
-    /* Delay de 0.5s */
-}
-
-.component:hover .hidden-content {
-    opacity: 1;
+    background-color: #cccccc;
+    color: #131313;
 
 }
 
@@ -110,6 +183,34 @@ body {
     text-align: center;
     width: 200px;
 }
+
+#combineButton {
+    width: 20vw;
+    height: 7vh;
+    border-radius: 3rem;
+    border: 3px solid transparent;
+    background-color: #4cb050;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2rem;
+    transition-duration: 0.4s;
+    color: #ccc;
+}
+
+#combineButton:disabled {
+    color: #ccc;
+    background-color: #131313;
+    border: 3px solid #cccccc;
+    cursor: not-allowed;
+}
+
+#combineButton:hover:not(:disabled) {
+    border: 3px solid transparent;
+    background-color: #165218;
+    cursor: pointer;
+}
+
 
 .remove-button {
     display: block;
@@ -123,6 +224,7 @@ body {
     position: absolute;
     top: 10px;
     left: 50%;
+    transition-duration: 0.4s;
     transform: translateX(-50%);
 }
 
@@ -131,14 +233,22 @@ body {
     cursor: not-allowed;
 }
 
+.remove-button:hover:not(:disabled) {
+    background-color: #812a2a;
+}
+
 #result {
-    font-size: 36px;
-    color: #333;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.5rem;
+    color: #cccccca2;
     text-align: center;
 }
 
 /* Estilos do modal */
 .modal {
+
     display: none;
     /* Oculta o modal por padrão */
     position: fixed;
@@ -147,31 +257,40 @@ body {
     /* Fixa o modal acima de outros elementos */
     left: 0;
     top: 0;
-    width: 100%;
+    width: 100vw;
     /* Ocupa toda a largura da tela */
-    height: 100%;
+    height: 100vh;
     /* Ocupa toda a altura da tela */
     overflow: auto;
     /* Adiciona rolagem se necessário */
     background-color: rgba(0, 0, 0, 0.6);
     /* Fundo escuro com transparência */
+
+    animation: fadeInAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 /* Estilos do conteúdo do modal */
 .modal-content {
-    background-color: #fff;
+    background-color: #232323;
     /* Fundo branco para o conteúdo */
-    margin: 15% auto;
+    margin-top: 10vh;
+    margin-left: 10vw;
     /* Margem centralizada verticalmente e horizontalmente */
-    padding: 20px;
+    padding: 2rem;
     border: 1px solid #888;
+    box-shadow: 10px 10px 30px #0000007a;
     /* Borda cinza clara */
-    width: 80%;
+    height: 55%;
+    width: 60vw;
     /* Largura do modal */
-    max-width: 600px;
+    /*max-width: 600px;*/
     /* Largura máxima do modal */
     position: relative;
     /* Para posicionar o botão de fechar */
+
+    border-radius: 0.8rem;
 }
 
 /* Estilos do botão de fechar */
@@ -190,10 +309,146 @@ body {
     cursor: pointer;
 }
 
-/* Estilos da imagem no modal */
+.modalContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#modalTitle {
+    padding-left: 0rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 2.5rem;
+    color: #ccc;
+
+    text-align: center;
+
+    margin-top: -0.2rem;
+    margin-bottom: 2rem;
+}
+
 #modalImage {
-    max-width: 100%;
-    /* Garante que a imagem não ultrapasse o tamanho do modal */
-    height: auto;
-    /* Mantém a proporção da imagem */
+    width: 5rem;
+
+    flex: 1;
+}
+
+#modalDescription {
+    flex: 2.5;
+
+    padding-left: 2rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.js-container {
+    pointer-events: none;
+    position: fixed;
+    z-index: 5;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    perspective: 700px;
+    overflow: hidden;
+
+
+}
+
+
+.progress-container {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    height: 30px;
+    background-color: #4caf50;
+    width: 0%;
+    text-align: center;
+    color: white;
+    line-height: 30px;
+    /* Alinha o texto verticalmente */
+}
+
+.progress-text {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.confetti--animation-slow {
+    animation: confetti-slow 2.25s linear 1 forwards;
+}
+
+.confetti--animation-medium {
+    animation: confetti-medium 1.75s linear 1 forwards;
+}
+
+.confetti--animation-fast {
+    animation: confetti-fast 1.25s linear 1 forwards;
+}
+
+@keyframes confetti-fadeout {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes confetti-slow {
+    0% {
+        transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+    }
+
+    100% {
+        transform: translate3d(25px, 105vh, 0) rotateX(360deg) rotateY(180deg);
+    }
+}
+
+@keyframes confetti-medium {
+    0% {
+        transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+    }
+
+    100% {
+        transform: translate3d(100px, 105vh, 0) rotateX(100deg) rotateY(360deg);
+    }
+}
+
+@keyframes confetti-fast {
+    0% {
+        transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+    }
+
+    100% {
+        transform: translate3d(-50px, 105vh, 0) rotateX(10deg) rotateY(250deg);
+    }
+}
+
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
