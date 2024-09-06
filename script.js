@@ -1,3 +1,7 @@
+const select = new Audio('./Assets/sound/select.mp3');
+const correct = new Audio('./Assets/sound/correct.mp3');
+const wrong = new Audio('./Assets/sound/wrong.mp3');
+
 document.addEventListener('DOMContentLoaded', () => {
 
     fetch('data.json')
@@ -23,6 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const modalImage = document.getElementById('modalImage');
             const modalDescription = document.getElementById('modalDescription');
             const span = document.getElementsByClassName('close')[0];
+            const confettiContainer = document.getElementsByClassName("js-container");
+
+            confettiContainer[1].style.display = "none";
 
             const availableComponents = new Set(['Resistor', 'Diodo', 'Fonte de Tensão', 'Capacitor']);
             const totalCombinations = Object.keys(combinations).length;
@@ -69,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             function showComponentModal(name) {
                 modalTitle.textContent = name;
                 modalImage.src = descriptions[name].image; // Adicione a URL da imagem correspondente ao novo componente
-                modalDescription.textContent = descriptions[name].short || 'Descrição não disponível';
+                modalDescription.textContent = descriptions[name].long || 'Descrição não disponível';
                 modal.style.display = 'block';
             }
 
@@ -81,12 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
             window.onclick = function (event) {
                 if (event.target === modal) {
                     hideComponentModal();
+                    confettiContainer[1].style.display = "none";
                 }
             }
 
             // Fecha o modal quando o usuário clica no botão de fechar
             span.onclick = function () {
                 hideComponentModal();
+                confettiContainer[1].style.display = "none";
             }
 
             function updateResultDiv() {
@@ -96,8 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     let resultComponent = combinations[combinationKey] || combinations[reverseCombinationKey];
 
+
                     if (resultComponent) {
-                        if (availableComponents.has(resultComponent)) {
+                        if (availableComponents.has(resultComponent.name)) {
                             resultDiv.textContent = 'Componente já descoberto';
                             resultDiv.style.fontSize = '24px'; // Ajusta o tamanho da fonte
                             resultDiv.style.textAlign = 'center'; // Centraliza o texto
@@ -117,17 +127,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             componentsDiv.addEventListener('click', (event) => {
+                select.play();
                 if (event.target.classList.contains('component')) {
                     const selectedComponent = event.target.dataset.component;
                     if (!firstComponent) {
                         firstComponent = selectedComponent;
                         title1.textContent = firstComponent;
+                        img1.style.display = "flex";
                         img1.src = descriptions[firstComponent].image; // Adicione a URL da imagem correspondente, se necessário
                         removeButton1.disabled = false;
                         event.target.classList.add('selected');
                     } else if (!secondComponent) {
                         secondComponent = selectedComponent;
                         title2.textContent = secondComponent;
+                        img2.style.display = "flex";
                         img2.src = descriptions[secondComponent].image; // Adicione a URL da imagem correspondente, se necessário
                         removeButton2.disabled = false;
                         event.target.classList.add('selected');
@@ -149,6 +162,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     discoveredComponents.add(resultComponent.name); // Marca o componente como descoberto
                     showComponentModal(resultComponent.name);
                     updateProgressBar();
+                    confettiContainer[1].style.display = "block";
+                    confettiContainer[1].style.animation = "confetti-fadeout 3s forwards";
+                    correct.play();
+                } else {
+                    wrong.play();
                 }
 
                 clearSelections();
@@ -172,13 +190,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 newComponentDiv.dataset.component = name;
                 newComponentDiv.textContent = name;
 
-                const newHiddenContentDiv = document.createElement('div');
+                /*const newHiddenContentDiv = document.createElement('div');
                 newHiddenContentDiv.classList.add('hidden-content');
                 newHiddenContentDiv.dataset.component = name;
                 newHiddenContentDiv.textContent = `${descriptions[name].short}`;
 
                 newComponentDiv.appendChild(newHiddenContentDiv);
-
+*/
                 componentsDiv.appendChild(newComponentDiv);
             }
 
@@ -200,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             function clearSelection1() {
-                title1.textContent = 'Título 1';
+                title1.textContent = 'Componente 1';
                 img1.src = '';
                 removeButton1.disabled = true;
 
@@ -212,10 +230,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 firstComponent = null;
                 checkCombineButton();
+                img1.style.display = "none";
+
             }
 
             function clearSelection2() {
-                title2.textContent = 'Título 2';
+                title2.textContent = 'Componente 2';
                 img2.src = '';
                 removeButton2.disabled = true;
 
@@ -228,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 secondComponent = null;
                 checkCombineButton();
+                img2.style.display = "none";
             }
 
             function checkCombineButton() {
@@ -243,19 +264,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
+
             // Mostra o modal quando o usuário clica e segura um componente
-            document.querySelectorAll('.component').forEach(component => {
+            document.querySelectorAll('.components').forEach(component => {
                 component.addEventListener('mousedown', (event) => {
-                    event.target.dataset.longpress = Date.now();
+                    const target = event.target;
+                    target.dataset.longpress = Date.now(); // Armazena o momento em que o botão foi pressionado
+
+                    // Define o tempo mínimo para considerar como "segurar"
+                    const longpressTime = 500;
+
+                    // Cria um temporizador para executar a ação após o tempo de "segurar"
+                    target.longpressTimeout = setTimeout(() => {
+                        showComponentModal(target.dataset.component);
+                    }, longpressTime);
                 });
 
                 component.addEventListener('mouseup', (event) => {
-                    const longpressTime = 500; // Tempo mínimo para considerar como "segurar"
-                    const pressedTime = event.target.dataset.longpress;
+                    clearTimeout(event.target.longpressTimeout); // Limpa o temporizador se o mouse for solto antes do tempo
+                });
 
-                    if (pressedTime && (Date.now() - pressedTime > longpressTime)) {
-                        showComponentModal(event.target.dataset.component);
-                    }
+                component.addEventListener('mouseleave', (event) => {
+                    clearTimeout(event.target.longpressTimeout); // Limpa o temporizador se o mouse sair do elemento
                 });
             });
         }).catch(error => console.error('Erro ao carregar o arquivo JSON:', error));

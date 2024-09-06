@@ -17,98 +17,179 @@
             "initial_state": 1
         },
         "Resistor+Resistor": {
-            "name": "Resistor Equivalente",
+            "name": "Resistores Em Série",
             "initial_state": 0
         },
-        "Resistor+Diodo": {
-            "name": "Limitador de Corrente",
+        "Resistor+Transistor": {
+            "name": "Circuito Limitador de Corrente",
             "initial_state": 0
         },
-        "Resistor+Fonte de Tensão": {
-            "name": "Divisão de Tensão",
+        "Resistores Em Série+Fonte de Tensão": {
+            "name": "Circuito Divisor de Tensão",
             "initial_state": 0
         },
         "Resistor+Capacitor": {
-            "name": "Filtro RC",
+            "name": "Filtro Passa Baixa",
             "initial_state": 0
         },
         "Diodo+Diodo": {
-            "name": "Novo Diodo",
+            "name": "Transistor",
             "initial_state": 0
         },
         "Diodo+Fonte de Tensão": {
-            "name": "Regulador de Tensão",
+            "name": "Circuito Regulador de Tensão",
             "initial_state": 0
         },
         "Diodo+Capacitor": {
-            "name": "Retificador com Filtro",
+            "name": "Circuito Retificador com Filtro",
             "initial_state": 0
         },
-        "Fonte de Tensão+Capacitor": {
-            "name": "Retificador de Meia Onda",
+        "LED": {
+            "name": "LED",
+            "initial_state": 1
+        },
+        "Resistor+LED": {
+            "name": "LED Aceso",
+            "initial_state": 0
+        },
+        "LED+Fonte de Tensão": {
+            "name": "Explosão",
+            "initial_state": 0
+        },
+        "Potênciometro": {
+            "name": "Potênciometro",
+            "initial_state": 1
+        },
+        "Potênciometro+LED": {
+            "name": "LED Ajustável",
+            "initial_state": 0
+        },
+        "Indutor": {
+            "name": "Indutor",
+            "initial_state": 1
+        },
+        "Indutor+Resistor": {
+            "name": "Filtro Passa Alta",
+            "initial_state": 0
+        },
+        "Capacitor+Indutor": {
+            "name": "Filtro Passa Faixa",
+            "initial_state": 0
+        },
+        "Diodo+Indutor": {
+            "name": "Inversor DC/DC",
+            "initial_state": 0
+        },
+        "Indutor+Transistor": {
+            "name": "Oscilador LC",
             "initial_state": 0
         }
     },
     "descriptions": {
         "Resistor": {
             "short": "Limita corrente ao transformar energia elétrica em energia térmica.",
-            "long": "Descrição Longa",
-            "image": ""
+            "long": "Reduz o fluxo de corrente em um circuito, dissipando energia na forma de calor. Essencial para controlar níveis de tensão e corrente.",
+            "image": "Assets/components/resistor.png"
         },
         "Diodo": {
-            "short": "Descrição Curta",
-            "long": "Descrição Longa",
-            "image": ""
+            "short": "Permite a passagem de corrente em uma direção, bloqueando na oposta.",
+            "long": "Componente semicondutor que permite o fluxo de corrente apenas em uma direção, essencial para retificação e proteção de circuitos.",
+            "image": "Assets/components/diode.png"
         },
         "Fonte de Tensão": {
-            "short": "Descrição Curta",
-            "long": "Descrição Longa",
-            "image": ""
+            "short": "Fornece energia elétrica constante ou variável a um circuito.",
+            "long": "Dispositivo que mantém uma diferença de potencial constante, alimentando circuitos com a tensão necessária para o seu funcionamento.",
+            "image": "Assets/components/fonte_tensao.png"
         },
         "Capacitor": {
-            "short": "Descrição Curta",
-            "long": "Descrição Longa",
-            "image": ""
+            "short": "Armazena energia elétrica temporariamente em um campo elétrico.",
+            "long": "Componente que acumula carga elétrica, liberando-a quando necessário. Usado para filtragem, acoplamento e armazenamento de energia.",
+            "image": "Assets/components/capacitor.png"
         },
-        "Resistor Equivalente": {
+        "Resistores Em Série": {
             "short": "Um resistor com valor equivalente à combinação de resistores.",
-            "long": "Descrição Longa",
-            "image": ""
+            "long": "Combinação de resistores que resulta em um valor de resistência equivalente somado, usado para ajustar a resistência total do circuito.",
+            "image": "Assets/components/resistor_resistor.png"
         },
-        "Limitador de Corrente": {
+        "Circuito Limitador de Corrente": {
             "short": "Circuito que limita a corrente em uma direção.",
-            "long": "Descrição Longa",
-            "image": ""
+            "long": "Usa um resistor e um diodo para restringir o fluxo de corrente, protegendo componentes sensíveis contra sobrecorrente.",
+            "image": "Assets/components/current_limiter.png"
         },
-        "Divisão de Tensão": {
+        "Circuito Divisor de Tensão": {
             "short": "Circuito que divide a tensão entre dois resistores.",
-            "long": "Descrição Longa",
-            "image": ""
+            "long": "Utiliza dois resistores em série para criar uma tensão de saída proporcional à tensão de entrada, útil em ajustes de tensão.",
+            "image": "Assets/components/voltage_divider.png"
         },
-        "Filtro RC": {
-            "short": "Circuito que atua como um filtro de passa-baixa ou passa-alta.",
-            "long": "Descrição Longa",
-            "image": ""
+        "Filtro Passa Baixa": {
+            "short": "Circuito que atua como um filtro de passa-baixa.",
+            "long": "Filtra frequências altas, permitindo apenas as baixas passarem. Essencial para suavizar sinais e eliminar ruídos indesejados.",
+            "image": "Assets/components/rc_filter.png"
         },
-        "Novo Diodo": {
-            "short": "Um diodo com características combinadas.",
-            "long": "Descrição Longa",
-            "image": ""
+        "Transistor": {
+            "short": "Controla o fluxo de corrente em circuitos, amplificando sinais.",
+            "long": "Componente semicondutor chave para amplificação e chaveamento. Funciona como um interruptor controlado, fundamental em circuitos digitais.",
+            "image": "Assets/components/new_diode.png"
         },
-        "Regulador de Tensão": {
+        "Circuito Regulador de Tensão": {
             "short": "Circuito que regula a tensão de saída.",
-            "long": "Descrição Longa",
-            "image": ""
+            "long": "Mantém uma tensão de saída estável independentemente das variações na tensão de entrada, garantindo a operação segura dos circuitos.",
+            "image": "Assets/components/voltage_regulator.png"
         },
-        "Retificador com Filtro": {
+        "Circuito Retificador com Filtro": {
             "short": "Circuito que retifica a tensão com um filtro capacitivo.",
-            "long": "Descrição Longa",
-            "image": ""
+            "long": "Converte corrente alternada em corrente contínua, usando um diodo e um capacitor para suavizar a saída, essencial em fontes de alimentação.",
+            "image": "Assets/components/filter_rectifier.png"
         },
-        "Retificador de Meia Onda": {
-            "short": "Circuito que retifica meia onda da tensão de entrada.",
-            "long": "Descrição Longa",
-            "image": ""
+        "LED": {
+            "short": "Diodo que emite luz quando polarizado corretamente.",
+            "long": "Componente semicondutor que emite luz ao conduzir corrente. Usado em sinalização, iluminação e displays eletrônicos.",
+            "image": "Assets/components/led.png"
+        },
+        "LED Aceso": {
+            "short": "Um LED aceso com brilho reduzido devido ao resistor.",
+            "long": "LED emitindo luz com brilho controlado por um resistor, demonstrando o princípio da limitação de corrente.",
+            "image": "Assets/components/led_aceso.png"
+        },
+        "Explosão": {
+            "short": "Evento cômico causado por sobrecarga de corrente.",
+            "long": "Efeito inesperado e cômico em um circuito, onde a sobrecarga ou combinação incorreta de componentes leva à falha catastrófica.",
+            "image": "Assets/components/explosion.jpg"
+        },
+        "Potênciometro": {
+            "short": "Resistor variável que ajusta níveis de tensão ou corrente.",
+            "long": "Dispositivo que permite variação manual de resistência, usado para controlar volume, brilho e outras funções ajustáveis em circuitos.",
+            "image": "Assets/components/potentiometer.png"
+        },
+        "LED Ajustável": {
+            "short": "LED com brilho ajustável por um potenciômetro.",
+            "long": "Circuito que combina um LED e um potenciômetro para ajustar o brilho. Demonstra como a resistência variável influencia a corrente.",
+            "image": "Assets/components/ajustable_led.png"
+        },
+        "Indutor": {
+            "short": "Armazena energia em um campo magnético ao conduzir corrente.",
+            "long": "Componente que cria um campo magnético ao conduzir corrente, usado em filtros, osciladores e conversores de energia.",
+            "image": "Assets/components/inductor.png"
+        },
+        "Filtro Passa Alta": {
+            "short": "Filtra frequências baixas, deixando passar apenas as altas.",
+            "long": "Circuito que bloqueia sinais de baixa frequência, permitindo a passagem de sinais de alta frequência, usado em sistemas de comunicação.",
+            "image": "Assets/components/high_pass_filter.png"
+        },
+        "Filtro Passa Faixa": {
+            "short": "Permite a passagem de um intervalo específico de frequências.",
+            "long": "Filtra frequências fora de uma faixa determinada, útil em rádio e telecomunicações para selecionar sinais desejados.",
+            "image": "Assets/components/pass_band_filter.png"
+        },
+        "Inversor DC/DC": {
+            "short": "Converte tensão contínua de um nível para outro.",
+            "long": "Circuito que transforma uma tensão DC em outra, podendo aumentar ou diminuir o valor. Usado em fontes de energia portáteis e sistemas embarcados.",
+            "image": "Assets/components/inversor_dc_dc.png"
+        },
+        "Oscilador LC": {
+            "short": "Gera sinais de frequência utilizando um indutor e um capacitor.",
+            "long": "Circuito que cria oscilações periódicas usando um indutor e um capacitor. Essencial em transmissores de rádio e geradores de sinal.",
+            "image": "Assets/components/lc_oscillator.png"
         }
     }
 }

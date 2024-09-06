@@ -4,66 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layout com Barra Lateral</title>
+    <title>Circuit.io</title>
+    <link rel="icon" type="image/x-icon" href="Assets/favicon.ico">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Adicione o CSS para a barra de progresso aqui */
-        .progress-container {
-            width: 100%;
-            background-color: #f3f3f3;
-            border-radius: 5px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-        .progress-bar {
-            height: 30px;
-            background-color: #4caf50;
-            width: 0%;
-            text-align: center;
-            color: white;
-            line-height: 30px;
-            /* Alinha o texto verticalmente */
-        }
-
-        .progress-text {
-            text-align: center;
-            margin: 10px 0;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="container">
+    <main>
         <div class="main-content">
-            <div class="content-container">
+            <img class="logo" src="Assets/text_logo.svg" alt="logo" />
+
+            <section class="content-container">
                 <div class="box" id="box1">
                     <button id="removeButton1" class="remove-button" disabled>Remover</button>
-                    <h2 id="title1">Título 1</h2>
+                    <h2 class="box-title" id="title1">Componente 1</h2>
                     <img id="img1" src="" alt="Imagem 1">
                 </div>
+
                 <div class="icon">+</div>
                 <div class="box" id="box2">
                     <button id="removeButton2" class="remove-button" disabled>Remover</button>
-                    <h2 id="title2">Título 2</h2>
+                    <h2 class="box-title" id="title2">Componente 2</h2>
                     <img id="img2" src="" alt="Imagem 2">
                 </div>
+
                 <div class="icon">=</div>
                 <div class="box" id="box3">
-                    <h2>Título 3</h2>
-                    <div id="result">Resultado</div>
+                    <h2 class="box-title">Resultado</h2>
+                    <div id="result"></div>
                 </div>
-            </div>
+
+            </section>
             <button id="combineButton" disabled>Combinar</button>
 
             <!-- Barra de progresso -->
             <div class="progress-container">
                 <div id="progressBar" class="progress-bar">0%</div>
             </div>
-            <div id="progressText" class="progress-text">0/0 componentes descobertos</div>
+            <div id="progressText" class="progress-text">0/12 componentes descobertos</div>
         </div>
         <div class="sidebar">
-            <div class="sidebar-header">Barra Lateral
+            <div class="sidebar-header">CIRCUITOS E COMPONENTES
                 <!-- Função de Busca -->
                 <div class="search-container">
                     <input type="text" id="searchInput" placeholder="Digite para pesquisar..." oninput="search()">
@@ -72,18 +57,23 @@
             </div>
             <div class="components"></div>
         </div>
-    </div>
+    </main>
+
     <!-- Modal para novo componente descoberto -->
     <div id="componentModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2 id="modalTitle">Novo Componente</h2>
-            <img id="modalImage" src="" alt="Componente" />
-            <p id="modalDescription">Descrição do componente.</p>
+            <div class="modalContainer">
+                <img id="modalImage" src="" alt="Componente" />
+                <p id="modalDescription">Descrição do componente.</p>
+            </div>
         </div>
     </div>
-
+    <div class="js-container">
+    </div>
     <script src="script.js"></script>
+    <script src="confetti.js"></script>
 </body>
 
 </html>
