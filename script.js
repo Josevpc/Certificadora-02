@@ -31,8 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             confettiContainer[1].style.display = "none";
 
-            const availableComponents = new Set(['Resistor', 'Diodo', 'Fonte de Tensão', 'Capacitor']);
-            const totalCombinations = Object.keys(combinations).length;
+            const availableComponents = new Set()
+
+            let totalCombinations = 0;
+
+            for (let key in combinations) {
+                if (combinations[key].initial_state == 0) {
+                    totalCombinations = totalCombinations + 1;
+                }
+            }
+
             let discoveredComponents = new Set();
 
             const componentsDiv = document.querySelector('.components');
@@ -70,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 progressBar.style.width = `${progressPercentage}%`;
                 progressBar.textContent = `${Math.round(progressPercentage)}%`;
-                progressText.textContent = `${discoveredCount}/${totalCombinations} componentes descobertos`;
+                progressText.textContent = `${discoveredCount}/${totalCombinations} combinações descobertas`;
             }
 
             function showComponentModal(name) {
