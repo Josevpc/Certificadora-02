@@ -18,7 +18,7 @@ Este projeto foi desenvolvido por:
 - **Barra de Progresso**: Exibe o avanço do usuário ao longo dos desafios, incentivando o engajamento contínuo. A cada combinação correta, a barra de progresso é preenchida, permitindo que os usuários acompanhem seu desenvolvimento e motivando-os a continuar.
 - **Elementos Cômicos**: Algumas combinações de componentes resultam em efeitos inesperados, como circuitos que "não funcionam".
 - **Efeitos Sonoros e Visuais**: Cada ação do usuário, como uma combinação de componentes, é acompanhada por efeitos sonoros e visuais que tornam a experiência mais imersiva.
-- **Simplicidade de Edição**: Para adicionar novos componentes ou combinações, basta inserir o componente ou receita dentro de `"combinations": {}`, seguindo obrigatoriamente o mesmo padrão dos demais componentes. Abaixo, insira a descrição do componente em `"descriptions": {}`.
+- **Simplicidade de Edição**: Para adicionar novos componentes ou combinações, basta acessar o arquivo data.json e inserir o componente ou receita dentro de `"combinations": {}`, seguindo obrigatoriamente o mesmo padrão dos demais componentes. Abaixo, insira a descrição do componente em `"descriptions": {}`.
 
 - **Exemplo**:
   ```data.json
