@@ -98,7 +98,7 @@ main {
 }
 
 .sidebar-header {
-    background: #4DCBB6;
+    background: #4DCBB6, #5EC5B7;
     /*Alterações na Fonte*/
     font-size: 1rem;
     font-family: "Poppins", sans-serif;
@@ -244,6 +244,35 @@ main {
     font-size: 1.5rem;
     color: #cccccca2;
     text-align: center;
+}
+
+.footer {
+    background-color: #000000;
+    color: #ccc;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: fixed;
+    /* Fixa o rodapé na parte inferior */
+    bottom: 0;
+    /* Posiciona na parte inferior */
+}
+
+.footer-content {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.team-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+.team-list li {
+    font-size: 1rem;
+    color: #ccc;
 }
 
 /* Estilos do modal */
